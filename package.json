@@ -1,0 +1,27 @@
+{
+  "name": "formdata-schema",
+  "version": "0.1.0",
+  "description": "Parse FormData with a simple schema",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublish": "tsc",
+    "publish": "npm publish"
+  },
+  "keywords": [
+    "formdata",
+    "parser",
+    "lightweight"
+  ],
+  "author": {
+    "name": "Mohammed Aljaroudi",
+    "url": "https://github.com/aljaroudi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aljaroudi/formdata-parser"
+  },
+  "license": "ISC"
+}
