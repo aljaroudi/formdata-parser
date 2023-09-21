@@ -76,10 +76,8 @@ export function parseField<T extends SchemaType>(
 	}
 }
 
-export function parse<T extends Record<string, SchemaType>>(
-	data: FormData,
-	schema: T
-) {
+type Schema = Record<string, SchemaType>
+export function parse<T extends Schema>(data: FormData, schema: T) {
 	const parsedData: Partial<{ [K in keyof T]: unknown }> = {}
 
 	for (const [key, type] of Object.entries(schema)) {
@@ -91,4 +89,9 @@ export function parse<T extends Record<string, SchemaType>>(
 	}
 
 	return parsedData as { [K in keyof T]: Exclude<ReturnTypes[T[K]], Error> }
+}
+
+export function parseOrNull<T extends Schema>(data: FormData, schema: T) {
+	const parsed = parse(data, schema)
+	return parsed instanceof Error ? null : parsed
 }
