@@ -1,6 +1,6 @@
 {
   "name": "formdata-schema",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Parse FormData with a simple schema",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
