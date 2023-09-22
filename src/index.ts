@@ -8,6 +8,9 @@ type ReturnTypes = {
 	nonempty: string | Error
 	nonemptyOptional: string | null | Error
 
+	url: string | Error
+	urlOptional: string | null | Error
+
 	number: number | Error
 	numberOptional: number | null | Error
 
@@ -49,6 +52,12 @@ export function parseField<T extends SchemaType>(
 			return data.length > 0
 				? (data as ReturnTypes[T])
 				: new Error('Expected nonempty string. Got empty string')
+
+		case 'url':
+		case 'urlOptional':
+			return URL.canParse(data)
+				? (data as ReturnTypes[T])
+				: new Error(`Expected URL. Got ${data}`)
 
 		case 'number':
 		case 'numberOptional': {
