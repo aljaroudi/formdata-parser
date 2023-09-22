@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "prepublish": "bunx tsc",
-    "publish": "npm version patch && npm publish"
+    "prepublish": "bunx tsc && npm version patch",
+    "publish": "npm publish"
   },
   "sideEffects": false,
   "keywords": [
