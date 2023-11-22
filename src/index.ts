@@ -76,9 +76,18 @@ export function parseField<T extends SchemaType>(
 		}
 
 		case 'checkbox':
-			return data === 'yes'
-				? (true as ReturnTypes[T])
-				: new Error(`Expected checkbox. Got ${data}`)
+			switch (data) {
+				case 'yes':
+				case 'on':
+				case 'true':
+					return true as ReturnTypes[T]
+				case 'no':
+				case 'off':
+				case 'false':
+					return false as ReturnTypes[T]
+				default:
+					return new Error(`Expected checkbox. Got ${data}`)
+			}
 
 		default:
 			throw new Error(`Unknown type: ${type}`)
